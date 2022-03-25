@@ -1,20 +1,20 @@
 {
   "version": 2,
-  "dgSpecHash": "BjTLFxu+6YonfjIwnL6v+GMp8Fux+lrb/rfrArZVQcvnmAZiLADHBtcV51ZhGt96WwIioPTpFNc8zCiO7m5xgg==",
+  "dgSpecHash": "COXH19hLESgpNZQTnXw50oMoMIF6fMjlH6H4Wj20vuU/uEmqO0eG/va9PltRr4l5FYEUNa+dX2IXD2RMxBN3Cw==",
   "success": true,
-  "projectFilePath": "/storage/NVME2/General/Git/Vival/Vival.csproj",
+  "projectFilePath": "/home/reference/gits/VivalMacbar/Vival.csproj",
   "expectedPackageFiles": [
-    "/home/narcotics/.nuget/packages/atksharp/3.24.24.34/atksharp.3.24.24.34.nupkg.sha512",
-    "/home/narcotics/.nuget/packages/cairosharp/3.24.24.34/cairosharp.3.24.24.34.nupkg.sha512",
-    "/home/narcotics/.nuget/packages/eto.forms/2.6.1/eto.forms.2.6.1.nupkg.sha512",
-    "/home/narcotics/.nuget/packages/eto.platform.gtk/2.6.1/eto.platform.gtk.2.6.1.nupkg.sha512",
-    "/home/narcotics/.nuget/packages/gdksharp/3.24.24.34/gdksharp.3.24.24.34.nupkg.sha512",
-    "/home/narcotics/.nuget/packages/giosharp/3.24.24.34/giosharp.3.24.24.34.nupkg.sha512",
-    "/home/narcotics/.nuget/packages/glibsharp/3.24.24.34/glibsharp.3.24.24.34.nupkg.sha512",
-    "/home/narcotics/.nuget/packages/gtksharp/3.24.24.34/gtksharp.3.24.24.34.nupkg.sha512",
-    "/home/narcotics/.nuget/packages/pangosharp/3.24.24.34/pangosharp.3.24.24.34.nupkg.sha512",
-    "/home/narcotics/.nuget/packages/system.componentmodel.annotations/5.0.0/system.componentmodel.annotations.5.0.0.nupkg.sha512",
-    "/home/narcotics/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.2/microsoft.aspnetcore.app.ref.6.0.2.nupkg.sha512"
+    "/home/reference/.nuget/packages/atksharp/3.24.24.34/atksharp.3.24.24.34.nupkg.sha512",
+    "/home/reference/.nuget/packages/cairosharp/3.24.24.34/cairosharp.3.24.24.34.nupkg.sha512",
+    "/home/reference/.nuget/packages/eto.forms/2.6.1/eto.forms.2.6.1.nupkg.sha512",
+    "/home/reference/.nuget/packages/eto.platform.gtk/2.6.1/eto.platform.gtk.2.6.1.nupkg.sha512",
+    "/home/reference/.nuget/packages/gdksharp/3.24.24.34/gdksharp.3.24.24.34.nupkg.sha512",
+    "/home/reference/.nuget/packages/giosharp/3.24.24.34/giosharp.3.24.24.34.nupkg.sha512",
+    "/home/reference/.nuget/packages/glibsharp/3.24.24.34/glibsharp.3.24.24.34.nupkg.sha512",
+    "/home/reference/.nuget/packages/gtksharp/3.24.24.34/gtksharp.3.24.24.34.nupkg.sha512",
+    "/home/reference/.nuget/packages/pangosharp/3.24.24.34/pangosharp.3.24.24.34.nupkg.sha512",
+    "/home/reference/.nuget/packages/system.componentmodel.annotations/5.0.0/system.componentmodel.annotations.5.0.0.nupkg.sha512",
+    "/home/reference/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.2/microsoft.aspnetcore.app.ref.6.0.2.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/storage/NVME2/General/Git/Vival/Vival.csproj": {}
+    "/home/reference/gits/VivalMacbar/Vival.csproj": {}
   },
   "projects": {
-    "/storage/NVME2/General/Git/Vival/Vival.csproj": {
+    "/home/reference/gits/VivalMacbar/Vival.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/storage/NVME2/General/Git/Vival/Vival.csproj",
+        "projectUniqueName": "/home/reference/gits/VivalMacbar/Vival.csproj",
         "projectName": "Vival",
-        "projectPath": "/storage/NVME2/General/Git/Vival/Vival.csproj",
-        "packagesPath": "/home/narcotics/.nuget/packages/",
-        "outputPath": "/storage/NVME2/General/Git/Vival/obj/",
+        "projectPath": "/home/reference/gits/VivalMacbar/Vival.csproj",
+        "packagesPath": "/home/reference/.nuget/packages/",
+        "outputPath": "/home/reference/gits/VivalMacbar/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/narcotics/.nuget/NuGet/NuGet.Config"
+          "/home/reference/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"

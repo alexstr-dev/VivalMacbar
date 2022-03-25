@@ -33,7 +33,7 @@ public sealed class VivalBar : Form
     private readonly Label activeWindow = new()
     {
         Text = LinuxUtils.GetActiveWindowTitle(),
-        TextColor = Colors.Gray
+        TextColor = Colors.White
     };
 
     /// <summary>
@@ -91,7 +91,7 @@ public sealed class VivalBar : Form
     /// Creates a new gray "|" separator.
     /// </summary>
     /// <returns></returns>
-    private TableCell Separator() => new(new Label {Text = separator, TextColor = Colors.Gray});
+    private TableCell Separator() => new(new Label {Text = separator, TextColor = Colors.White});
 
     /// <summary>
     /// Draws all of the content.
@@ -104,23 +104,13 @@ public sealed class VivalBar : Form
             Padding = contentPadding,
             Rows =
             {
-                new TableRow(DrawText(" ", Colors.White, null, 0, 3),
-                    Separator(),
-                    DrawText(Environment.UserName, Colors.Gray),
-                    Separator(),
-                    DrawText(" ", Colors.White, null, 5, 3),
-                    DrawText(" ", Colors.White, LinuxUtils.OnRequestDecreaseWorkspace, 0, 3),
-                    workspaces,
-                    DrawText(" ", Colors.White, LinuxUtils.OnRequestIncreaseWorkspace, 0, 3),
-                    Separator(),
-                    DrawText(" ", Colors.White, null, 5, 3),
-                    DrawText(LinuxUtils.GetKernel(), Colors.Gray),
-                    Separator(),
-                    DrawText(" ", Colors.White, null, 5, 3),
-                    DrawText(LinuxUtils.GetGPUName(), Colors.Gray),
-                    Separator(),
-                    DrawText(" ", Colors.White, null, 5, 3),
+                new TableRow(DrawText(" ", Colors.White, null, 0, 2),
                     activeWindow,
+                    //Separator(),
+                    //DrawText(" ", Colors.White, null, 5, 3),
+                    //DrawText(LinuxUtils.GetGPUName(), Colors.White),
+                    //Separator(),
+                    //DrawText(" ", Colors.White, null, 5, 3),
                     DrawDate())
             }
         };
@@ -156,7 +146,6 @@ public sealed class VivalBar : Form
             Padding = datePadding,
             Rows = {date}
         });
-
 
     /// <summary>
     /// Shitty way of trying to keep the size consistent.
@@ -201,8 +190,10 @@ public sealed class VivalBar : Form
             {
                 Application.Instance.Invoke(() =>
                 {
-                    date.Text = $"{DateTime.Now:D} ({DateTime.Now:HH:mm:ss})";
-                    workspaces.Text = $"{LinuxUtils.GetActiveWorkspace()} / {LinuxUtils.workspacesCount}";
+                    date.Text = DateTime.Now.ToString("ddd MMM dd  HH:mm");
+                    workspaces.Text = LinuxUtils.GetConsoleOut("/usr/bin/bash",
+                        "-c \"wmctrl -d | grep -w '*' | cut -d ' ' -f13\"");
+                    //workspaces.Text = $"{LinuxUtils.GetActiveWorkspace()} / {LinuxUtils.workspacesCount}";
                     activeWindow.Text = LinuxUtils.GetActiveWindowTitle();
                 });
                 Thread.Sleep(wait);

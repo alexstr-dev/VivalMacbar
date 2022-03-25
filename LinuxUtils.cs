@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using Eto.Forms;
 
 namespace Vival;
 
@@ -61,22 +60,6 @@ internal static class LinuxUtils
         proc?.StandardOutput.Close();
         return stdOut?.Split(split)[0] ?? string.Empty;
     }
-
-    /// <summary>
-    /// Switch to the next workspace.
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    public static void OnRequestIncreaseWorkspace(object? sender, MouseEventArgs e) =>
-        ExecuteCommand("xdotool set_desktop --relative 1");
-
-    /// <summary>
-    /// Switch to the previous workspace.
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    public static void OnRequestDecreaseWorkspace(object? sender, MouseEventArgs e) =>
-        ExecuteCommand("xdotool set_desktop --relative -- -1");
 
     /// <summary>
     /// Executes a command.
