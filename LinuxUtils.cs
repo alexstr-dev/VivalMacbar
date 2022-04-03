@@ -1,26 +1,55 @@
 using System.Diagnostics;
+using Eto.Forms;
 
 namespace Vival;
 
 internal static class LinuxUtils
 {
+    #region Variables
     /// <summary>
-    ///     Setup our custom process which will be used to send commands.
+    /// <see cref="ProcessStartInfo"/> info for <see cref="GetConsoleOut"/> and <see cref="ExecuteCommand"/>.
+    /// </summary>
+    private static readonly ProcessStartInfo executeCommand = new()
+    {
+        FileName = "/usr/bin/bash",
+        CreateNoWindow = true,
+        RedirectStandardInput = true,
+        UseShellExecute = false
+    };
+
+    /// <summary>
+    /// Custom bash process for executing stdin commands.
+    /// </summary>
+    private static Process? customProcess;
+
+    /// <summary>
+    /// The amount of available workspaces.
+    /// </summary>
+    public static int workspacesCount;
+
+    /// <summary>
+    /// New line character.
+    /// </summary>
+    private const char split = '\n';
+    #endregion
+
+    /// <summary>
+    /// Setup our custom process which will be used to send commands.
     /// </summary>
     /// <exception cref="NullReferenceException"></exception>
     public static void SetupProcess()
     {
-        customProcess =
-            Process.Start(executeCommand) ?? throw new NullReferenceException("CUSTOMPROCESS IS NULL");
+        customProcess = Process.Start(executeCommand) ?? throw new NullReferenceException("CUSTOMPROCESS IS NULL");
+        workspacesCount = Convert.ToInt32(GetConsoleOut("xdotool", "get_num_desktops"));
     }
 
     /// <summary>
-    ///     Get the output from a command.
+    /// Get the output from a command.
     /// </summary>
     /// <param name="cmd"></param>
     /// <param name="args"></param>
     /// <returns></returns>
-    private static string GetConsoleOut(string cmd, string args)
+    public static string GetConsoleOut(string cmd, string args)
     {
         executeCommand.FileName = cmd;
         executeCommand.Arguments = args;
@@ -34,43 +63,69 @@ internal static class LinuxUtils
     }
 
     /// <summary>
-    ///     Executes a command.
+    /// Switch to the next workspace.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    public static void OnRequestIncreaseWorkspace(object? sender, MouseEventArgs e) =>
+        ExecuteCommand("xdotool set_desktop --relative 1");
+
+    /// <summary>
+    /// Switch to the previous workspace.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    public static void OnRequestDecreaseWorkspace(object? sender, MouseEventArgs e) =>
+        ExecuteCommand("xdotool set_desktop --relative -- -1");
+
+    /// <summary>
+    /// Executes a command.
     /// </summary>
     /// <param name="cmd"></param>
-    public static void ExecuteCommand(string cmd)
-    {
-        customProcess?.StandardInput.WriteLine($"bash -c \"{cmd}\"");
-    }
+    public static void ExecuteCommand(string cmd) => customProcess?.StandardInput.WriteLine($"bash -c \"{cmd}\"");
 
     /// <summary>
-    ///     Retrieves the currently active window title.
+    /// Retrieves the current kernel.
     /// </summary>
     /// <returns></returns>
-    public static string GetActiveWindowTitle()
+    public static string GetKernel() => GetConsoleOut("uname", "-r");
+
+    /// <summary>
+    /// Retrieves the currently active workspace.
+    /// </summary>
+    /// <param name="startFromOne">Start counting from 1 instead of 0</param>
+    /// <returns></returns>
+    public static int GetActiveWorkspace(bool startFromOne = true)
     {
-        return GetConsoleOut("xdotool", "getwindowfocus getwindowname");
+        var result = Convert.ToInt32(GetConsoleOut("xdotool", "get_desktop"));
+        return startFromOne ? result + 1 : result;
     }
 
-    #region Variables
     /// <summary>
-    ///     <see cref="ProcessStartInfo" /> info for <see cref="GetConsoleOut" /> and <see cref="ExecuteCommand" />.
+    /// Get the Workspace ID from a programs class name (for example, Vival).
     /// </summary>
-    private static readonly ProcessStartInfo executeCommand = new()
+    /// <param name="className"></param>
+    /// <returns></returns>
+    public static int GetClassWorkspace(string className)
     {
-        FileName = "/usr/bin/bash",
-        CreateNoWindow = true,
-        RedirectStandardInput = true,
-        UseShellExecute = false
-    };
+        var result = Convert.ToInt32(GetConsoleOut("xdotool", $"search --class {className} get_desktop"));
+        return result;
+    }
 
     /// <summary>
-    ///     Custom bash process for executing stdin commands.
+    /// Try and retrieve the active GPU name.
     /// </summary>
-    private static Process? customProcess;
+    /// <returns>"Unknown Graphics Device" if no name was found.</returns>
+    public static string GetGPUName()
+    {
+        var result = GetConsoleOut("/usr/bin/bash",
+            "-c \"lspci | grep VGA | cut -d \":\" -f3 | cut -d \"[\" -f2 | cut -d \"]\" -f1\"");
+        return result is {Length: < 2} ? "Unknown Graphics Device" : result;
+    }
 
     /// <summary>
-    ///     New line character.
+    /// Retrieves the currently active window title.
     /// </summary>
-    private const char split = '\n';
-    #endregion
+    /// <returns></returns>
+    public static string GetActiveWindowTitle() => GetConsoleOut("xdotool", "getwindowfocus getwindowname");
 }

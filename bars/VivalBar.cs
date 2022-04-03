@@ -106,10 +106,21 @@ public sealed class VivalBar : Form
         new Thread(() =>
         {
             const int wait = 100;
+            const string @class = "Vival";
             while (true)
             {
-                LinuxUtils.ExecuteCommand(
-                    "xdotool search --class Vival set_desktop_for_window %@ $(xdotool get_desktop)");
+                try
+                {
+                    // ! Fix for Issue #1: xmonad border flashing
+                    if (LinuxUtils.GetClassWorkspace(@class) != LinuxUtils.GetActiveWorkspace(false))
+                        LinuxUtils.ExecuteCommand(
+                            "xdotool search --class Vival set_desktop_for_window %@ $(xdotool get_desktop)");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    // ignored from here.
+                }
                 Thread.Sleep(wait);
             }
         }) {Priority = ThreadPriority.Lowest, IsBackground = true}.Start();
