@@ -8,13 +8,13 @@ namespace Vival;
 public static class VivalRunner
 {
     /// <summary>
-    ///     Main function to be called upon startup.
+    /// Main function to be called upon startup.
     /// </summary>
     [STAThread]
     public static void Run()
     {
         // ? If Vival was already opened, close it. Acting as a toggle behavior.
-        if (Process.GetProcessesByName("Vival") is not {Length: 1})
+        if (Process.GetProcessesByName("Vival").Length is not 1)
         {
             KillVival();
             return;
@@ -24,7 +24,7 @@ public static class VivalRunner
     }
 
     /// <summary>
-    ///     Kills all Vival instances.
+    /// Kills all Vival instances.
     /// </summary>
     private static void KillVival()
     {
