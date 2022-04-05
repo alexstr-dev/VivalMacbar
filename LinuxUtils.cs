@@ -1,5 +1,6 @@
+using System;
 using System.Diagnostics;
-using Eto.Forms;
+using System.Threading.Tasks;
 
 namespace Vival;
 
@@ -63,22 +64,6 @@ internal static class LinuxUtils
     }
 
     /// <summary>
-    /// Switch to the next workspace.
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    public static async void OnRequestIncreaseWorkspace(object? sender, MouseEventArgs e) =>
-        await ExecuteCommand("xdotool set_desktop --relative 1");
-
-    /// <summary>
-    /// Switch to the previous workspace.
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    public static async void OnRequestDecreaseWorkspace(object? sender, MouseEventArgs e) =>
-        await ExecuteCommand("xdotool set_desktop --relative -- -1");
-
-    /// <summary>
     /// Executes a command.
     /// </summary>
     /// <param name="cmd"></param>
@@ -96,11 +81,19 @@ internal static class LinuxUtils
     /// </summary>
     /// <param name="startFromOne">Start counting from 1 instead of 0</param>
     /// <returns></returns>
-    public static async Task<int> GetActiveWorkspace(bool startFromOne = true)
+    public static async Task<int> GetActiveWorkspace(bool startFromOne)
     {
         var result = Convert.ToInt32(await GetConsoleOut("xdotool", "get_desktop"));
         return startFromOne ? result + 1 : result;
     }
+
+    /// <summary>
+    /// Retrieves the name of the currently active workspace.
+    /// </summary>
+    /// <returns></returns>
+    public static async Task<string> GetActiveWorkspace() =>
+        await GetConsoleOut("/usr/bin/bash",
+            "-c \"wmctrl -d | grep -w '*' | cut -d ' ' -f13\"");
 
     /// <summary>
     /// Get the Workspace ID from a programs class name (for example, Vival).

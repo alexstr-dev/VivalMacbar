@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vival", "Vival.csproj", "{F32243F3-9108-47DF-971D-E06A6899F50A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F32243F3-9108-47DF-971D-E06A6899F50A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F32243F3-9108-47DF-971D-E06A6899F50A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F32243F3-9108-47DF-971D-E06A6899F50A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F32243F3-9108-47DF-971D-E06A6899F50A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

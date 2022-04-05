@@ -1,0 +1,49 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="{Binding Width}" d:DesignHeight="{Binding Height}"
+        MinWidth="{Binding Width}"
+        MinHeight="{Binding Height}"
+        MaxWidth="{Binding Width}"
+        MaxHeight="{Binding Height}"
+        Background="{Binding BackgroundColor}"
+        Position="0, 0"
+        ShowInTaskbar="False"
+        FontWeight="UltraLight"
+        FontStyle="Normal"
+        FontSize="16"
+        FontFamily="SF Pro Display"
+        Foreground="White"
+        PositionChanged="WindowBase_OnPositionChanged"
+        x:Class="Vival.MainWindow"
+        Title="Vival">
+    <Panel>
+        <!-- <Panel Background="White" Height="1" Margin="0, 21, 0, 0" /> -->
+        <!-- Left Side -->
+        <!-- Every new Column Definition has to be set as "Auto" and not "*" -->
+        <Grid RowDefinitions="Auto" ColumnDefinitions="Auto,Auto"
+              Margin="0, -2, 0, 0">
+            <Label Grid.Row="0" Grid.Column="0" Foreground="White" Width="25" Content="  " />
+            <!--<Label Grid.Row="0" Grid.Column="1" Content="|" />-->
+            <!--<Label Grid.Row="0" Grid.Column="3" Content="|" />-->
+            <!--<Label Grid.Row="0" Grid.Column="4" Content="{Binding CurrentWorkspace}" />-->
+            <!--<Label Grid.Row="0" Grid.Column="5" Content="|" />-->
+            <!--<Label Grid.Row="0" Grid.Column="6" Foreground="White" Width="25" Content=" " />-->
+            <!--<Label Grid.Row="0" Grid.Column="7" Content="{Binding ActiveGPU}" />-->
+            <!--<Label Grid.Row="0" Grid.Column="8" Content="| Linux > Windows |" />-->
+            <!--<Label Grid.Row="0" Grid.Column="9" Foreground="White" Width="25" Content=" " />-->
+            <Label Grid.Row="0" Grid.Column="1" Content="{Binding CurrentWindow}" />
+
+        </Grid>
+        <!-- Right Side -->
+        <Grid HorizontalAlignment="Right" RowDefinitions="Auto" ColumnDefinitions="Auto,Auto,Auto,*,*"
+              Margin="0, -2, 0, 0">
+            <Label Grid.Row="0" Grid.Column="0" Width="30" Content="  " />
+            <Label Grid.Row="0" Grid.Column="1" Width="30" Content="  " />
+            <Label Grid.Row="0" Grid.Column="2" Content="{Binding Username}" />
+            <Label Grid.Row="0" Grid.Column="3" Width="25" Content=" " />
+            <Label Grid.Row="0" Grid.Column="4" Margin="-2, 0, 3, 0" Content="{Binding CurrentDate} " />
+        </Grid>
+    </Panel>
+</Window>

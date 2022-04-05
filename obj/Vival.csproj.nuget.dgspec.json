@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/reference/gits/VivalMacbar/Vival.csproj": {}
+    "/home/reference/gits/VivalRepos/Vival/Vival.csproj": {}
   },
   "projects": {
-    "/home/reference/gits/VivalMacbar/Vival.csproj": {
+    "/home/reference/gits/VivalRepos/Vival/Vival.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/reference/gits/VivalMacbar/Vival.csproj",
+        "projectUniqueName": "/home/reference/gits/VivalRepos/Vival/Vival.csproj",
         "projectName": "Vival",
-        "projectPath": "/home/reference/gits/VivalMacbar/Vival.csproj",
+        "projectPath": "/home/reference/gits/VivalRepos/Vival/Vival.csproj",
         "packagesPath": "/home/reference/.nuget/packages/",
-        "outputPath": "/home/reference/gits/VivalMacbar/obj/",
+        "outputPath": "/home/reference/gits/VivalRepos/Vival/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/reference/.nuget/NuGet/NuGet.Config"
@@ -38,13 +38,17 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Eto.Forms": {
+            "Avalonia": {
               "target": "Package",
-              "version": "[2.6.1, )"
+              "version": "[0.10.13, )"
             },
-            "Eto.Platform.Gtk": {
+            "Avalonia.Desktop": {
               "target": "Package",
-              "version": "[2.6.1, )"
+              "version": "[0.10.13, )"
+            },
+            "XamlNameReferenceGenerator": {
+              "target": "Package",
+              "version": "[1.3.4, )"
             }
           },
           "imports": [
